@@ -4,6 +4,35 @@ extern crate libc;
 
 use libc::{c_void, c_int, c_uint, c_char, c_uchar, c_short, ssize_t, timeval};
 
+// MISSING //////////////////////////////////////////////////
+// Structs
+// libusb_control_setup
+// Enums
+// libusb_bos_type
+// libusb_ss_usb_device_capability_attributes
+// libusb_supported_speed
+// libusb_transfer_flags
+// libusb_usb_2_0_extension_attributes
+// Functions
+// libusb_control_transfer_get_data
+// libusb_control_transfer_get_setup
+// libusb_cpu_to_le16
+// libusb_fill_bulk_stream_transfer
+// libusb_fill_bulk_transfer
+// libusb_fill_control_setup
+// libusb_fill_control_transfer
+// libusb_fill_interrupt_transfer
+// libusb_fill_iso_transfer
+// libusb_free_pollfds
+// libusb_get_descriptor
+// libusb_get_iso_packet_buffer
+// libusb_get_iso_packet_buffer_simple
+// libusb_get_port_path
+// libusb_hotplug_deregister_callback
+// libusb_hotplug_register_callback
+// libusb_set_iso_packet_lengths
+/////////////////////////////////////////////////////////////
+
 
 #[repr(C)]
 pub struct libusb_context {
