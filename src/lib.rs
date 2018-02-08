@@ -23,7 +23,6 @@ use libc::{c_void, c_int, c_uint, c_char, c_uchar, c_short, ssize_t, timeval};
 // libusb_fill_control_transfer
 // libusb_fill_interrupt_transfer
 // libusb_fill_iso_transfer
-// libusb_free_pollfds
 // libusb_get_descriptor
 // libusb_get_iso_packet_buffer
 // libusb_get_iso_packet_buffer_simple
@@ -470,6 +469,7 @@ extern "C" {
     pub fn libusb_pollfds_handle_timeouts(context: *mut libusb_context) -> c_int;
     pub fn libusb_get_next_timeout(context: *mut libusb_context, tv: *mut timeval) -> c_int;
     pub fn libusb_get_pollfds(context: *mut libusb_context) -> *const *mut libusb_pollfd;
+    pub fn libusb_free_pollfds(pollfds: *const *mut libusb_pollfd);
     pub fn libusb_set_pollfd_notifiers(context: *mut libusb_context, added_cb: libusb_pollfd_added_cb, removed_cb: libusb_pollfd_removed_cb, user_data: *mut c_void);
 }
 
