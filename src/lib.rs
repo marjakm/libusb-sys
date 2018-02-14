@@ -466,12 +466,14 @@ extern "C" {
     pub fn libusb_free_pollfds(pollfds: *const *mut libusb_pollfd);
     pub fn libusb_set_pollfd_notifiers(context: *mut libusb_context, added_cb: libusb_pollfd_added_cb, removed_cb: libusb_pollfd_removed_cb, user_data: *mut c_void);
 
-    pub fn libusb_fill_control_setup(buffer: *mut c_uchar, bmRequestType: u8, bRequest: u8, wValue: u16, wIndex: u16 , wLength: u16);
-    pub fn libusb_fill_control_transfer     (transfer: *mut libusb_transfer, dev_handle: *mut libusb_device_handle,                                    buffer: *mut c_uchar,                                        callback: libusb_transfer_cb_fn, user_data: *mut c_void, timeout: c_uint);
-    pub fn libusb_fill_bulk_transfer        (transfer: *mut libusb_transfer, dev_handle: *mut libusb_device_handle, endpoint: c_uchar,                 buffer: *mut c_uchar, length: c_int,                         callback: libusb_transfer_cb_fn, user_data: *mut c_void, timeout: c_uint);
-    pub fn libusb_fill_bulk_stream_transfer (transfer: *mut libusb_transfer, dev_handle: *mut libusb_device_handle, endpoint: c_uchar, stream_id: u32, buffer: *mut c_uchar, length: c_int,                         callback: libusb_transfer_cb_fn, user_data: *mut c_void, timeout: c_uint);
-    pub fn libusb_fill_interrupt_transfer   (transfer: *mut libusb_transfer, dev_handle: *mut libusb_device_handle, endpoint: c_uchar,                 buffer: *mut c_uchar, length: c_int,                         callback: libusb_transfer_cb_fn, user_data: *mut c_void, timeout: c_uint);
-    pub fn libusb_fill_iso_transfer         (transfer: *mut libusb_transfer, dev_handle: *mut libusb_device_handle, endpoint: c_uchar,                 buffer: *mut c_uchar, length: c_int, num_iso_packets: c_int, callback: libusb_transfer_cb_fn, user_data: *mut c_void, timeout: c_uint);
+    // These functions without the preceding _ are defined in the libusb.h header, so no symbols
+    // shim.c is used to make symbols for them and add _ prefix to the name
+    pub fn _libusb_fill_control_setup(buffer: *mut c_uchar, bmRequestType: u8, bRequest: u8, wValue: u16, wIndex: u16 , wLength: u16);
+    pub fn _libusb_fill_control_transfer     (transfer: *mut libusb_transfer, dev_handle: *mut libusb_device_handle,                                    buffer: *mut c_uchar,                                        callback: libusb_transfer_cb_fn, user_data: *mut c_void, timeout: c_uint);
+    pub fn _libusb_fill_bulk_transfer        (transfer: *mut libusb_transfer, dev_handle: *mut libusb_device_handle, endpoint: c_uchar,                 buffer: *mut c_uchar, length: c_int,                         callback: libusb_transfer_cb_fn, user_data: *mut c_void, timeout: c_uint);
+    pub fn _libusb_fill_bulk_stream_transfer (transfer: *mut libusb_transfer, dev_handle: *mut libusb_device_handle, endpoint: c_uchar, stream_id: u32, buffer: *mut c_uchar, length: c_int,                         callback: libusb_transfer_cb_fn, user_data: *mut c_void, timeout: c_uint);
+    pub fn _libusb_fill_interrupt_transfer   (transfer: *mut libusb_transfer, dev_handle: *mut libusb_device_handle, endpoint: c_uchar,                 buffer: *mut c_uchar, length: c_int,                         callback: libusb_transfer_cb_fn, user_data: *mut c_void, timeout: c_uint);
+    pub fn _libusb_fill_iso_transfer         (transfer: *mut libusb_transfer, dev_handle: *mut libusb_device_handle, endpoint: c_uchar,                 buffer: *mut c_uchar, length: c_int, num_iso_packets: c_int, callback: libusb_transfer_cb_fn, user_data: *mut c_void, timeout: c_uint);
 }
 
 
