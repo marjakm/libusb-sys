@@ -5,8 +5,6 @@ extern crate libc;
 use libc::{c_void, c_int, c_uint, c_char, c_uchar, c_short, ssize_t, timeval};
 
 // MISSING //////////////////////////////////////////////////
-// Structs
-// libusb_control_setup
 // Enums
 // libusb_bos_type
 // libusb_ss_usb_device_capability_attributes
@@ -42,6 +40,17 @@ pub struct libusb_device_handle {
     __private: c_void
 }
 
+#[derive(Debug)]
+#[repr(C)]
+pub struct libusb_control_setup {
+    pub bmRequestType: u8,
+    pub bRequest: u8,
+    pub wValue: u16,
+    pub wIndex: u16,
+    pub wLength: u16,
+}
+
+#[derive(Debug)]
 #[repr(C)]
 pub struct libusb_version {
     pub major: u16,
@@ -52,6 +61,7 @@ pub struct libusb_version {
     pub describe: *const c_char,
 }
 
+#[derive(Debug)]
 #[allow(non_snake_case)]
 #[repr(C)]
 pub struct libusb_device_descriptor {
@@ -71,6 +81,7 @@ pub struct libusb_device_descriptor {
     pub bNumConfigurations: u8,
 }
 
+#[derive(Debug)]
 #[allow(non_snake_case)]
 #[repr(C)]
 pub struct libusb_config_descriptor {
@@ -87,12 +98,14 @@ pub struct libusb_config_descriptor {
     pub extra_length: c_int,
 }
 
+#[derive(Debug)]
 #[repr(C)]
 pub struct libusb_interface {
     pub altsetting: *const libusb_interface_descriptor,
     pub num_altsetting: c_int,
 }
 
+#[derive(Debug)]
 #[allow(non_snake_case)]
 #[repr(C)]
 pub struct libusb_interface_descriptor {
@@ -110,6 +123,7 @@ pub struct libusb_interface_descriptor {
     pub extra_length: c_int,
 }
 
+#[derive(Debug)]
 #[allow(non_snake_case)]
 #[repr(C)]
 pub struct libusb_endpoint_descriptor {
@@ -125,6 +139,7 @@ pub struct libusb_endpoint_descriptor {
     pub extra_length: c_int,
 }
 
+#[derive(Debug)]
 #[repr(C)]
 pub struct libusb_iso_packet_descriptor {
     pub length: c_uint,
@@ -132,6 +147,7 @@ pub struct libusb_iso_packet_descriptor {
     pub status: c_int,
 }
 
+#[derive(Debug)]
 #[allow(non_snake_case)]
 #[repr(C)]
 pub struct libusb_ss_endpoint_companion_descriptor {
@@ -142,6 +158,7 @@ pub struct libusb_ss_endpoint_companion_descriptor {
     pub wBytesPerInterval: u16,
 }
 
+#[derive(Debug)]
 #[allow(non_snake_case)]
 #[repr(C)]
 pub struct libusb_bos_dev_capability_descriptor {
@@ -150,6 +167,7 @@ pub struct libusb_bos_dev_capability_descriptor {
     pub bDevCapabilityType: u8,
 }
 
+#[derive(Debug)]
 #[allow(non_snake_case)]
 #[repr(C)]
 pub struct libusb_bos_descriptor {
@@ -159,6 +177,7 @@ pub struct libusb_bos_descriptor {
     pub bNumDeviceCaps: u8,
 }
 
+#[derive(Debug)]
 #[allow(non_snake_case)]
 #[repr(C)]
 pub struct libusb_usb_2_0_extension_descriptor {
@@ -168,6 +187,7 @@ pub struct libusb_usb_2_0_extension_descriptor {
     pub bmAttributes: u32,
 }
 
+#[derive(Debug)]
 #[allow(non_snake_case)]
 #[repr(C)]
 pub struct libusb_ss_usb_device_capability_descriptor {
@@ -181,6 +201,7 @@ pub struct libusb_ss_usb_device_capability_descriptor {
     pub bU2DevExitLat: u8,
 }
 
+#[derive(Debug)]
 #[allow(non_snake_case)]
 #[repr(C)]
 pub struct libusb_container_id_descriptor {
@@ -191,6 +212,7 @@ pub struct libusb_container_id_descriptor {
     pub ContainerId: [u8; 16],
 }
 
+#[derive(Debug)]
 #[repr(C)]
 pub struct libusb_transfer {
     pub dev_handle: *mut libusb_device_handle,
@@ -208,6 +230,7 @@ pub struct libusb_transfer {
     pub iso_packet_desc: [libusb_iso_packet_descriptor; 0],
 }
 
+#[derive(Debug)]
 #[repr(C)]
 pub struct libusb_pollfd {
     pub fd: c_int,
