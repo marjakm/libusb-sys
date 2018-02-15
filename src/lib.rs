@@ -41,6 +41,7 @@ pub struct libusb_device_handle {
 }
 
 #[derive(Debug)]
+#[allow(non_snake_case)]
 #[repr(C)]
 pub struct libusb_control_setup {
     pub bmRequestType: u8,
